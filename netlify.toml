@@ -1,0 +1,27 @@
+[build]
+  # The command that Netlify will run to build your app (if applicable)
+  command = "npm run build"
+  
+  # The directory to publish after building (for static sites, typically 'dist' or 'build')
+  publish = "build"
+
+[build.environment]
+  # Set Node version for your app
+  NODE_VERSION = "16"
+
+[[plugins]]
+  package = "@netlify/plugin-functions-core"
+
+[[functions]]
+  directory = "netlify/functions"
+  # Set the maximum memory for each serverless function (default: 512MB)
+  memory = 1024
+  # Set the maximum timeout for each function (default: 10 seconds)
+  timeout = 10
+
+[redirects]
+  # Example for redirecting URLs, you can add any custom redirects here if needed
+  [[redirects]]
+    from = "/old-url"
+    to = "/new-url"
+    status = 301
